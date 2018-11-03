@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import json, os
+import json, os, hashlib
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
@@ -60,6 +60,7 @@ def makeprofile():
     filename = request.form['firstname'] + request.form['lastname']
     socialmedia=request.form['socialmedia'].split("\n")
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
+         'passhash': hashlib.sha3_256(request.form['firstname'] + request.form['lastname'] + request.form['password']),
          'tagline': request.form['tagline'],
          'about': request.form['about'],
          'causes': request.form['causes'],
@@ -80,6 +81,10 @@ def sendmail():
 @app.route('/success')
 def success():
     return render_template('success.html')
+
+@app.route('/searchprofiles')
+def searchprofiles():
+    return render_template('searchprofiles.html')
 
 
 if __name__ == '__main__':
