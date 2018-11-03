@@ -41,7 +41,7 @@ def resources():
     return render_template('resources.html')
 
 
-@app.route('/profile', methods=['GET'])
+@app.route('/profile')
 def profile():
     with open('junruanderson.json', 'r') as file:
         d = json.loads(file.read())
@@ -60,7 +60,7 @@ def makeprofile():
     filename = request.form['firstname'] + request.form['lastname']
     socialmedia=request.form['socialmedia'].split("\n")
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
-         'passhash': hashlib.sha3_256(request.form['firstname'] + request.form['lastname'] + request.form['password']),
+         'passhash': hashlib.sha3_256((request.form['firstname'] + request.form['lastname'] + request.form['password']).encode(encoding='utf-8')),
          'tagline': request.form['tagline'],
          'about': request.form['about'],
          'causes': request.form['causes'],
