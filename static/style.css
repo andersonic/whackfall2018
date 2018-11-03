@@ -2,5 +2,11 @@
 {
     --color1: mediumseagreen;
     --color2: lightskyblue;
-	--font1: Times;
+	--font1: "Times New Roman";
+}
+
+body{
+    font-family: var(--font1), serif;
+    position: relative;
+    height:100vh;
 }
