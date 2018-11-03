@@ -2,14 +2,18 @@
 {
     --color1: #BBD3FF;
     --textcolor: #2B8DCC;
-	--font1: "Times New Roman";
+	--font1: "Source Sans Pro";
 }
 
 body{
-    font-family: var(--font1), serif;
+    font-family: var(--font1), sans-serif;
     position: relative;
     height:100vh;
     color: black;
+}
+
+h2{
+    font-size: 1.4em;
 }
 
 #link-row{
