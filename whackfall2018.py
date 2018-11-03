@@ -24,6 +24,11 @@ def contactus():
 def resources():
     return render_template('resources.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html', name="Jane Doe", tagline="Testing", text1="I am performing a test",
+                           imgsrc="../images/" + "img.png", text2="more testing whipeee yay!")
+
 
 if __name__ == '__main__':
     app.run()
