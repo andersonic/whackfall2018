@@ -5,7 +5,11 @@
     <title>{{ name }}</title>
 
     <meta name="description" content="{{ name }}: {{ tagline }}">
-	<meta name="keywords" content= "{{ name }}">
+	<meta name="keywords" content= "
+        {% for item in keywords %}
+        {{ item }},
+        {% endfor %}
+    ">
 
 
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
@@ -13,6 +17,8 @@
     <script src="../static/bootstrap.min.js"></script>
     <script src="../static/jquery-3.3.1.min.js"></script>
 	<script src="../static/script.js"></script>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">
@@ -45,7 +51,7 @@
             <div class="dropdown col-md-2">
                 <p onmouseover="showAction()" onmouseout="hideAction()">Action</p>
                 <div class="dropdown-content">
-                    <a href="#">Create Profile</a>
+                    <a href="/createprofile">Create Profile</a>
                     <a href="#">Sign In</a>
                     <a href="#">Search Profiles</a>
                 </div>
@@ -57,7 +63,7 @@
         <h1>{{ name }}</h1>
         <div class="row">
             <div class="col-md-6">
-                {{ text1 }}
+                {{ about }}
             </div>
             <div class="col-md-6">
                 <img src="{{ imgsrc }}" alt="{{ name }}">
@@ -65,7 +71,14 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                {{ text2 }}
+                {{ causes }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% for item in socialmedia %}
+                <a href="{{ item }}">{{ item }}</a><br>
+                {% endfor %}
             </div>
         </div>
 

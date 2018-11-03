@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sonbyrd--Contact Us</title>
+    <title>Songbyrd--Create Profile</title>
 
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../static/style.css">
     <script src="../static/bootstrap.min.js"></script>
     <script src="../static/jquery-3.3.1.min.js"></script>
 	<script src="../static/script.js"></script>
-
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>Songbyrd</h1>
@@ -51,7 +49,40 @@
             </div>
         </div>
 
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <form id="create-profile-form" action="/makeprofile" method="post">
+                    First name:<br>
+
+                    <input type="text" name="firstname" value="First Name"><br>
+                    Last name:<br>
+                    <input type="text" name="lastname" value="Last Name"><br>
+                    Tagline:<br>
+                    <textarea form="create-profile-form" rows="1" cols="100" maxlength="100" name="tagline">
+                        Speaking Out Against Injustice
+                    </textarea>
+
+                    <textarea rows="4" cols="150" maxlength="5000" name="about" form="create-profile-form">
+                    About you (5000 char max)
+                    </textarea>
+                    <textarea rows="4" cols="150" maxlength="5000" name="causes" form="create-profile-form">
+                    Causes You Believe In (5000 char max)
+                    </textarea>
+
+                    <textarea rows="5" cols="150" maxlength="5000" name="socialmedia" form="create-profile-form">
+                    Your other social media (one per line)
+                    </textarea>
+
+                    <input type="submit" value="Create Profile!">
+                </form>
+            </div>
+
+        </div>
+
     </div>
+
 
 </body>
 </html>

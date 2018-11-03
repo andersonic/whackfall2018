@@ -1,7 +1,7 @@
 :root
 {
-    --color1: mediumseagreen;
-    --color2: lightskyblue;
+    --color1: #BBD3FF;
+    --textcolor: #2B8DCC;
 	--font1: "Times New Roman";
 }
 
@@ -9,6 +9,7 @@ body{
     font-family: var(--font1), serif;
     position: relative;
     height:100vh;
+    color: black;
 }
 
 #link-row{
@@ -16,7 +17,7 @@ body{
     padding-bottom: 1.75%;
     padding-top: 1.75%;
     text-align: center;
-    color:black;
+    color: black;
 }
 
 #link-row a{
