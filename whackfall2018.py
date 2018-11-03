@@ -8,9 +8,9 @@ def default():
     return render_template('index.html')
 
 
-@app.route('/missionstatement')
+@app.route('/whymakeprofile')
 def missionstatement():
-    return render_template('missionstatement.html')
+    return render_template('whymakeprofile.html')
 
 
 @app.route('/aboutus')
