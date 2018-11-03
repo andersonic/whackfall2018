@@ -46,7 +46,7 @@ def profile():
     with open('junruanderson.json', 'r') as file:
         d = json.loads(file.read())
     return render_template('profile.html', name=d['name'], tagline=d['tagline'], about=d['about'],
-                           imgsrc="../images/" + "img.png", causes=d['causes'],
+                           imgsrc="../static/usrpics/" + "test.png", causes=d['causes'],
                            socialmedia=d['socialmedia'],
                            keywords=d['keywords'])
 
