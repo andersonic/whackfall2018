@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cf790ed-201e-43b0-a4f1-820fd6dcc505" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/img.png" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/favicon.ico" afterPath="$PROJECT_DIR$/static/favicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/songbird_logo.png" afterPath="$PROJECT_DIR$/static/songbird_logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/aboutus.html" afterPath="$PROJECT_DIR$/templates/aboutus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/contactus.html" afterPath="$PROJECT_DIR$/templates/contactus.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/createprofile.html" afterPath="$PROJECT_DIR$/templates/createprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/profile.html" afterPath="$PROJECT_DIR$/templates/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/resources.html" afterPath="$PROJECT_DIR$/templates/resources.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/searchprofiles.html" afterPath="$PROJECT_DIR$/templates/searchprofiles.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/success.html" afterPath="$PROJECT_DIR$/templates/success.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/whymakeprofile.html" afterPath="$PROJECT_DIR$/templates/whymakeprofile.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/whackfall2018$whackfall2018.coverage" NAME="whackfall2018 Coverage Results" MODIFIED="1541283486404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/whackfall2018$whackfall2018.coverage" NAME="whackfall2018 Coverage Results" MODIFIED="1541283706579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -120,8 +108,8 @@
       <file leaf-file-name="createprofile.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/createprofile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="70" lean-forward="false" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+            <state relative-caret-position="221">
+              <caret line="73" column="151" lean-forward="false" selection-start-line="73" selection-start-column="151" selection-end-line="73" selection-end-column="151" />
               <folding />
             </state>
           </provider>
@@ -705,8 +693,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/createprofile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="70" lean-forward="false" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+        <state relative-caret-position="221">
+          <caret line="73" column="151" lean-forward="false" selection-start-line="73" selection-start-column="151" selection-end-line="73" selection-end-column="151" />
           <folding />
         </state>
       </provider>
