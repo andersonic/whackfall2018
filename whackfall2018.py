@@ -30,10 +30,12 @@ def resources():
 
 @app.route('/profile', methods=['GET'])
 def profile():
-    return render_template('profile.html', name="Jane Doe", tagline="Testing", about="I am performing a test",
-                           imgsrc="../images/" + "img.png", causes="more testing whipeee yay!",
-                           socialmedia=["https://www.w3schools.com/tags/att_textarea_form.asp", "https://stackoverflow.com/questions/11556958/sending-data-from-html-form-to-a-python-script-in-flask"],
-                           keywords=["test1", "test2", "test3"])
+    with open('junruanderson.json', 'r') as file:
+        d = json.loads(file.read())
+    return render_template('profile.html', name=d['name'], tagline=d['tagline'], about=d['about'],
+                           imgsrc="../images/" + "img.png", causes=d['causes'],
+                           socialmedia=d['socialmedia'],
+                           keywords=d['keywords'])
 
 @app.route('/createprofile')
 def createprofile():
