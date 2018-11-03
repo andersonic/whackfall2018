@@ -1,7 +1,20 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import json, os
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
+
+app.config.update(dict(
+    MAIL_SERVER='smtp.googlemail.com',
+    MAIL_PORT=465,
+    MAIL_USE_TLS=False,
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME='songbyrdhelp',
+    MAIL_PASSWORD='Whack2018'
+))
+
+mail = Mail(app)
+
 
 @app.route('/')
 def default():
@@ -54,7 +67,19 @@ def makeprofile():
          'socialmedia': socialmedia}
     with open("./" + filename + ".json", "w") as file:
         file.write(json.dumps(d))
-    return(render_template('index.html'))
+    return redirect(url_for('success'), code=302)
+
+
+@app.route('/sendmail', methods=['POST'])
+def sendmail():
+    msg=Message('Contact', sender='songbyrdhelp@gmail.com', recipients=['songbyrdhelp@gmail.com'])
+    msg.body=request.form['content'] + "\n" + request.form['name'] + "\n" + request.form['email']
+    mail.send(msg)
+    return redirect(url_for('success'), code=302)
+
+@app.route('/success')
+def success():
+    return render_template('success.html')
 
 
 if __name__ == '__main__':
