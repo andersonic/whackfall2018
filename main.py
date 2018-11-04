@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import json, os, hashlib
 from flask_mail import Mail, Message
 from pathlib import Path
-import updateDB
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 
@@ -51,6 +50,7 @@ def resources():
 def profile(filename):
     with open(filename + ".json", 'r') as file:
         d = json.loads(file.read())
+    print(filename)
     return render_template('profile.html', name=d['name'], tagline=d['tagline'], about=d['about'],
                            imgsrc=filename + ".jpg", causes=d['causes'],
                            socialmedia=d['socialmedia'],
@@ -79,6 +79,7 @@ def makeprofile():
         img_filename = filename + str(i) + ".jpg"
 
     #img.save(img_filename)
+    print(img_filename)
     socialmedia=request.form['socialmedia'].split("\n")
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
          #'passhash': hashlib.sha3_256((request.form['firstname'] + request.form['lastname'] + request.form['password']).encode(encoding='utf-8')),
