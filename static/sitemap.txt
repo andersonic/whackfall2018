@@ -1,0 +1,4 @@
+https://songbyrd.herokuapp.com/
+https://songbyrd.herokuapp.com/whymakeprofile
+https://songbyrd.herokuapp.com/aboutus
+https://songbyrd.herokuapp.com/resources

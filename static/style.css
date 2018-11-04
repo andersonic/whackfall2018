@@ -77,3 +77,10 @@ h2{
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+img{
+    max-height:500px;
+    max-width:500px;
+    height:auto;
+    width:auto;
+}

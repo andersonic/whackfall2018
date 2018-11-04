@@ -7,13 +7,9 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 UPLOAD_FOLDER = 'static'
-ALLOWED_EXTENSIONS = {'jpg', 'json'}
+ALLOWED_EXTENSIONS = {'jpg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
-photos = UploadSet('photos', IMAGES)
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
-configure_uploads(app, photos)
 
 app.config.update(dict(
     MAIL_SERVER='smtp.googlemail.com',
@@ -73,6 +69,8 @@ def makeprofile():
     json_filename = filename + ".json"
     img_filename = filename + ".jpg"
 
+
+
     i = 0
     changed = False
     while Path(json_filename).exists():
@@ -83,7 +81,7 @@ def makeprofile():
     if changed:
         img_filename = filename + str(i) + ".jpg"
 
-    photoname = photos.save(request.files['pic'])
+    img.save(os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/'+img_filename))
     socialmedia=request.form['socialmedia'].split("\n")
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
          #'passhash': hashlib.sha3_256((request.form['firstname'] + request.form['lastname'] + request.form['password']).encode(encoding='utf-8')),
@@ -92,10 +90,12 @@ def makeprofile():
          'causes': request.form['causes'],
          'keywords': [request.form['firstname'], request.form['lastname'], request.form['firstname'] + " " + request.form['lastname'], request.form['tagline'], "songbyrd"],
          'socialmedia': socialmedia,
-         'photoname': photoname}
+         'photoname': img_filename}
     with open(json_filename, "w") as file:
         file.write(json.dumps(d))
-    return redirect(url_for('success'), code=302)
+    with open(os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/sitemap.txt'), 'a') as file:
+        file.write("\nhttps://songbyrd.herokuapp.com/profile" + filename)
+    return redirect(url_for('profile', filename=filename), code=302)
 
 
 @app.route('/sendmail', methods=['POST'])
@@ -109,14 +109,14 @@ def sendmail():
 def success():
     return render_template('success.html')
 
-@app.route('/searchprofiles')
+"""@app.route('/searchprofiles')
 def searchprofiles():
     return render_template('searchprofiles.html')
 
 
 @app.route('/signin')
 def signin():
-    return render_template('signin.html')
+    return render_template('signin.html')"""
 
 
 if __name__ == '__main__':

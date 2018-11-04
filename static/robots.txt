@@ -8,4 +8,4 @@ Disallow: /contactus
 Disallow: /createprofile
 Disallow: /searchprofiles
 
-Sitemap:
+Sitemap: https://songbyrd.herokuapp.com/sitemap.txt
