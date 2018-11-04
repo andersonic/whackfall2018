@@ -16,9 +16,11 @@ app.config.update(dict(
 
 mail = Mail(app)
 
+cause_dict = {'blm': 'blm.txt', 'jvp':'jvp.txt','queer':'LGBT.txt', 'sjp':'sjp.txt', 'antifa':'antifa.txt', 'jrn':'journalism.txt', 'metoo':'metoo.txt'}
 
 @app.route('/')
 def default():
+    print(os.getcwd())
     return render_template('index.html')
 
 
@@ -46,8 +48,14 @@ def resources():
 def profile(filename):
     with open(filename + ".json", 'r') as file:
         d = json.loads(file.read())
+    causes = [d['causes']]
+    for cause in d['added_causes']:
+        with open(
+            os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/' + cause_dict[cause]),
+            'r') as file:
+            causes.append(file.read().replace("[name]", d['name']))
     return render_template('profile.html', name=d['name'], tagline=d['tagline'], about=d['about'],
-                           imgsrc=d['photoname'], causes=d['causes'],
+                           imgsrc=d['photoname'], causes=causes,
                            socialmedia=d['socialmedia'],
                            keywords=d['keywords'])
 
@@ -58,12 +66,10 @@ def createprofile():
 
 @app.route('/makeprofile', methods=['POST'])
 def makeprofile():
-    filename = request.form['firstname'] + request.form['lastname']
+    filename = request.form['firstname'].replace(" ", "_") + request.form['lastname'].replace(" ", "_")
     img = request.files['pic']
     json_filename = filename + ".json"
     img_filename = filename + ".jpg"
-
-
 
     i = 0
     changed = False
@@ -77,6 +83,7 @@ def makeprofile():
 
     img.save(os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/'+img_filename))
     socialmedia=request.form['socialmedia'].split("\n")
+    list_of_causes = request.form.getlist('cause')
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
          #'passhash': hashlib.sha3_256((request.form['firstname'] + request.form['lastname'] + request.form['password']).encode(encoding='utf-8')),
          'tagline': request.form['tagline'],
@@ -84,7 +91,8 @@ def makeprofile():
          'causes': request.form['causes'],
          'keywords': [request.form['firstname'], request.form['lastname'], request.form['firstname'] + " " + request.form['lastname'], request.form['tagline'], "songbyrd"],
          'socialmedia': socialmedia,
-         'photoname': img_filename}
+         'photoname': img_filename,
+         'added_causes': list_of_causes}
     with open(json_filename, "w") as file:
         file.write(json.dumps(d))
     with open(os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/sitemap.txt'), 'a') as file:

@@ -8,6 +8,8 @@ runtime_config:
 libraries:
 - name: ssl
   version: latest
+- name: flask
+  version: latest
 
 handlers:
 - url: /static

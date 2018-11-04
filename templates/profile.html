@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ name }}--Songbyrd</title>
-	<meta name="description" content="SONGBYRD: Reclaiming our stories. A platform for activists to control their own search presence.">
-	<meta name="keywords" content="Songbyrd, songbyrd, song byrd, songbird, song bird, songbirds, song birds, activist, activists, activism, Jewish, Judaism, Palestine, Canary Mission ">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -77,7 +75,9 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                {{ causes }}
+                {% for cause in causes %}
+                    {{ cause }}<br><br>
+                {%  endfor %}
             </div>
         </div>
         <div class="row">
