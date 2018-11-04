@@ -1,15 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import json, os, hashlib
+import json, os
 from flask_mail import Mail, Message
 from pathlib import Path
-from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__, static_folder='static', static_url_path='')
-
-UPLOAD_FOLDER = 'static'
-ALLOWED_EXTENSIONS = {'jpg'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 app.config.update(dict(
     MAIL_SERVER='smtp.googlemail.com',
