@@ -2,12 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import json, os, hashlib
 from flask_mail import Mail, Message
 from pathlib import Path
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = {'jpg', 'json'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+photos = UploadSet('photos', IMAGES)
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+configure_uploads(app, photos)
 
 app.config.update(dict(
     MAIL_SERVER='smtp.googlemail.com',
@@ -50,9 +56,8 @@ def resources():
 def profile(filename):
     with open(filename + ".json", 'r') as file:
         d = json.loads(file.read())
-    print(filename)
     return render_template('profile.html', name=d['name'], tagline=d['tagline'], about=d['about'],
-                           imgsrc=filename + ".jpg", causes=d['causes'],
+                           imgsrc=d['photoname'], causes=d['causes'],
                            socialmedia=d['socialmedia'],
                            keywords=d['keywords'])
 
@@ -78,8 +83,7 @@ def makeprofile():
     if changed:
         img_filename = filename + str(i) + ".jpg"
 
-    #img.save(img_filename)
-    print(img_filename)
+    photoname = photos.save(request.files['pic'])
     socialmedia=request.form['socialmedia'].split("\n")
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
          #'passhash': hashlib.sha3_256((request.form['firstname'] + request.form['lastname'] + request.form['password']).encode(encoding='utf-8')),
@@ -87,7 +91,8 @@ def makeprofile():
          'about': request.form['about'],
          'causes': request.form['causes'],
          'keywords': [request.form['firstname'], request.form['lastname'], request.form['firstname'] + " " + request.form['lastname'], request.form['tagline'], "songbyrd"],
-         'socialmedia': socialmedia}
+         'socialmedia': socialmedia,
+         'photoname': photoname}
     with open(json_filename, "w") as file:
         file.write(json.dumps(d))
     return redirect(url_for('success'), code=302)
