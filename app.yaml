@@ -10,7 +10,8 @@ libraries:
   version: latest
 
 handlers:
-- url: /static
-  static_dir: static
+- url: /(.*\.(txt|png|jpg|css|js))$
+  static_files: static/\1
+  upload: static/.*\.(txt|png|jpg|css|js)$
 - url: /.*
   script: main.app
