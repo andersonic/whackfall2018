@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description" content="{{ name }}: {{ tagline }}">
 	<meta name="keywords" content= "
@@ -12,13 +13,13 @@
     ">
 
 
-    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../static/style.css">
-    <script src="../static/bootstrap.min.js"></script>
-    <script src="../static/jquery-3.3.1.min.js"></script>
-	<script src="../static/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+	<script src="script.js"></script>
 
-    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
@@ -54,7 +55,7 @@
                 <p onmouseover="showAction()" onmouseout="hideAction()">Action</p>
                 <div class="dropdown-content">
                     <a href="/createprofile">Create Profile</a>
-                    <a href="#">Sign In</a>
+                    <a href="/signin">Sign In</a>
                     <a href="#">Search Profiles</a>
                 </div>
             </div>

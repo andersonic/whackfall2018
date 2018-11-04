@@ -1,9 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import json, os, hashlib
 from flask_mail import Mail, Message
 import updateDB
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
+
+UPLOAD_FOLDER = 'usrpics'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app.config.update(dict(
     MAIL_SERVER='smtp.googlemail.com',
@@ -47,7 +51,7 @@ def profile():
     with open('junruanderson.json', 'r') as file:
         d = json.loads(file.read())
     return render_template('profile.html', name=d['name'], tagline=d['tagline'], about=d['about'],
-                           imgsrc="../images/" + "img.png", causes=d['causes'],
+                           imgsrc="../static/usrpics/" + "test.png", causes=d['causes'],
                            socialmedia=d['socialmedia'],
                            keywords=d['keywords'])
 
@@ -59,6 +63,8 @@ def createprofile():
 @app.route('/makeprofile', methods=['POST'])
 def makeprofile():
     filename = request.form['firstname'] + request.form['lastname']
+    img = request.files['pic']
+    img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename + os.path.splitext(img.filename)[1]))
     socialmedia=request.form['socialmedia'].split("\n")
     d = {'name': request.form['firstname'] + " " + request.form['lastname'],
          'passhash': hashlib.sha3_256((request.form['firstname'] + request.form['lastname'] + request.form['password']).encode(encoding='utf-8')),
@@ -86,6 +92,11 @@ def success():
 @app.route('/searchprofiles')
 def searchprofiles():
     return render_template('searchprofiles.html')
+
+
+@app.route('/signin')
+def signin():
+    return render_template('signin.html')
 
 
 if __name__ == '__main__':

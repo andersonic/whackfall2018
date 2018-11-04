@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Songbyrd--Create Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../static/style.css">
-    <script src="../static/bootstrap.min.js"></script>
-    <script src="../static/jquery-3.3.1.min.js"></script>
-	<script src="../static/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+	<script src="script.js"></script>
 
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -47,7 +48,7 @@
                 <p onmouseover="showAction()" onmouseout="hideAction()">Action</p>
                 <div class="dropdown-content">
                     <a href="/createprofile">Create Profile</a>
-                    <a href="#">Sign In</a>
+                    <a href="/signin">Sign In</a>
                     <a href="#">Search Profiles</a>
                 </div>
             </div>
@@ -60,13 +61,15 @@
                 <form id="create-profile-form" action="/makeprofile" method="post">
                     First name:<br>
 
-                    <input type="text" name="firstname" value="First Name"><br>
+                    <input type="text" name="firstname" value="First Name" required><br>
                     Last name:<br>
-                    <input type="text" name="lastname" value="Last Name"><br>
-                    Password:
-                    <input type="password" name="password"><br>
+                    <input type="text" name="lastname" value="Last Name" required><br>
+                    Password:<br>
+                    <input type="password" name="password" required><br>
                     Tagline:<br>
-                    <textarea form="create-profile-form" rows="1" cols="100" maxlength="100" name="tagline">Speaking Out Against Injustice</textarea>
+                    <textarea form="create-profile-form" rows="1" cols="100" maxlength="100" name="tagline" required>Speaking Out Against Injustice</textarea><br>
+                    Image:<br>
+                    <input type="file" accept=".png, .jpg" name="pic" required>
 
                     <textarea rows="4" cols="100" maxlength="5000" name="about" form="create-profile-form">About you (5000 char max)</textarea>
                     <textarea rows="4" cols="100" maxlength="5000" name="causes" form="create-profile-form">Causes You Believe In (5000 char max)</textarea>
@@ -74,6 +77,8 @@
                     <textarea rows="5" cols="100" maxlength="5000" name="socialmedia" form="create-profile-form">Your other social media (one per line)</textarea><br>
 
                     <input type="submit" value="Create Profile!">
+                    <br>
+                    <br>
                 </form>
             </div>
 

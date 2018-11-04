@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /aboutus
+Allow: /
+Allow: /resources
+Allow: /whymakeprofile
+Allow: /profile/*
+Disallow: /contactus
+Disallow: /createprofile
+Disallow: /searchprofiles
+
+Sitemap:
