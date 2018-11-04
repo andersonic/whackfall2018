@@ -88,7 +88,7 @@ def makeprofile():
     with open(json_filename, "w") as file:
         file.write(json.dumps(d))
     with open(os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/sitemap.txt'), 'a') as file:
-        file.write("\nhttps://songbyrd.org/profile/" + filename)
+        file.write("\nhttps://songbyrd.herokuapp.com/" + filename)
     return redirect(url_for('profile', filename=filename), code=302)
 
 
