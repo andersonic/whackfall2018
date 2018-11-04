@@ -66,7 +66,7 @@ def makeprofile():
     filename = request.form['firstname'] + request.form['lastname']
     img = request.files['pic']
     json_filename = filename + ".json"
-    #img_filename = Path(os.path.join(app.config['UPLOAD_FOLDER'], filename + ".jpg"))
+    img_filename = filename + ".jpg"
 
     i = 0
     changed = False
@@ -75,8 +75,8 @@ def makeprofile():
         i += 1
         json_filename = filename + str(i) + ".json"
 
-    """if changed:
-        img_filename = Path(os.path.join(app.config['UPLOAD_FOLDER'], filename + str(i) + ".jpg"))"""
+    if changed:
+        img_filename = filename + str(i) + ".jpg"
 
     #img.save(img_filename)
     socialmedia=request.form['socialmedia'].split("\n")
