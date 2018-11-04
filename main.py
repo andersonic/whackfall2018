@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for
 import json, os
 from flask_mail import Mail, Message
 from pathlib import Path
@@ -88,7 +88,7 @@ def makeprofile():
     with open(json_filename, "w") as file:
         file.write(json.dumps(d))
     with open(os.path.join(os.path.abspath(__file__)[:os.path.abspath(__file__).index('main.py')], 'static/sitemap.txt'), 'a') as file:
-        file.write("\nhttps://songbyrd.herokuapp.com/profile/" + filename)
+        file.write("\nhttps://songbyrd.org/profile/" + filename)
     return redirect(url_for('profile', filename=filename), code=302)
 
 
