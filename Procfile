@@ -1,1 +1,1 @@
-web: python whackfall2018.py
+web: python main.py
